@@ -20,7 +20,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1.39
+    m_Value: 4
     min: 0
   scatter:
     m_OverrideState: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     min: 0
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.25, g: 0.5634537, b: 1, a: 1}
+    m_Value: {r: 0, g: 0.76471734, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: 18.1
+    m_Value: 46
     min: -100
     max: 100
 --- !u!114 &11400000
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 0
