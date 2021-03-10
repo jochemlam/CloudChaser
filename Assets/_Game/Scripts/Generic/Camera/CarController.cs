@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
                    
                   deceleration = 0.1f,
 
-                  rotateSpeed = 4f;
+                  rotateSpeed = 1.5f;
 
     [SerializeField]Transform rayChecker;
 

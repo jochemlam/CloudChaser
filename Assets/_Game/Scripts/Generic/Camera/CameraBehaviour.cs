@@ -9,7 +9,7 @@ public class CameraBehaviour : MonoBehaviour
     private string vehicle = "PlayerRacer"; //Specifies the object this script will be getting current speed data from
     private float speed,
                   standardFOV,
-                  maxFOV = 130,
+                  maxFOV = 110,
                   step,
                   minimumSpeed = 50, //Minimum speed for changing Field of View
                   tCameraSmoothingTPV = 10, //Camera smoothing Translate TPV (Lower = Smoother)
