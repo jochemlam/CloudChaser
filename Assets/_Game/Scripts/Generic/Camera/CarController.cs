@@ -6,13 +6,15 @@ public class CarController : MonoBehaviour
 {
     private float maxSpeed = 80,
                   maxBackwardsSpeed = -20,
-                  acceleration = 0.1f,
+                  acceleration = 0.3f,
                   accelerationBackwards = 0.05f,
                   currentSpeed,
                    
                   deceleration = 0.1f,
 
-                  rotateSpeed = 0.8f;
+                  rotateSpeed = 4f;
+
+    [SerializeField]Transform rayChecker;
 
     public float GetCurrentSpeed()
     {

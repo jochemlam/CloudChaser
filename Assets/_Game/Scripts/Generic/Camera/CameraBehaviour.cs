@@ -9,7 +9,7 @@ public class CameraBehaviour : MonoBehaviour
     private string vehicle = "PlayerRacer"; //Specifies the object this script will be getting current speed data from
     private float speed,
                   standardFOV,
-                  maxFOV = 90,
+                  maxFOV = 130,
                   step,
                   minimumSpeed = 50, //Minimum speed for changing Field of View
                   tCameraSmoothingTPV = 10, //Camera smoothing Translate TPV (Lower = Smoother)
@@ -20,11 +20,13 @@ public class CameraBehaviour : MonoBehaviour
                                      fpvOffset = new Vector3(0, 2, 1);
     private CarController cc;
     private Transform target;
+    private Transform targetVehicleObj;
     private void Start()
     {
         cam = transform.GetChild(0).GetComponent<Camera>();
         cc = GameObject.Find(vehicle).GetComponent<CarController>();
         target = GameObject.Find(vehicle).transform;
+        targetVehicleObj = GameObject.Find(vehicle).transform.GetChild(0);
 
         standardFOV = cam.fieldOfView;
         step = (maxFOV - cam.fieldOfView) / (cc.GetMaxSpeed() - minimumSpeed);
@@ -45,6 +47,19 @@ public class CameraBehaviour : MonoBehaviour
             }
             TPVSmoothFollowTarget();
         }
+        float rot = targetVehicleObj.rotation.eulerAngles.x;
+        if (rot > 100)
+        {
+            rot -= 360;
+        }
+        if (rot > 10)
+        {
+            TPVSmoothFollowTargetTILT();
+        }
+        else
+        {
+            TPVSmoothFollowTarget();
+        }
     }
 
     //Changes FOV for Third Person View (TPV)
@@ -59,6 +74,16 @@ public class CameraBehaviour : MonoBehaviour
     {
         var targetPos = target.TransformPoint(tpvOffset);
         transform.position = Vector3.Lerp(transform.position, targetPos, tCameraSmoothingTPV * Time.deltaTime);
+
+        var dir = target.position - transform.position;
+        var rot = Quaternion.LookRotation(dir, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, rCameraSmoothingTPV * Time.deltaTime);
+    }
+
+    private void TPVSmoothFollowTargetTILT()
+    {
+        var targetPos = target.TransformPoint(tpvOffset);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(targetPos.x + 20, targetPos.y + 30, targetPos.z), tCameraSmoothingTPV * Time.deltaTime);
 
         var dir = target.position - transform.position;
         var rot = Quaternion.LookRotation(dir, Vector3.up);

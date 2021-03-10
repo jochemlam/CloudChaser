@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour
        {
             transform.Rotate(0, -2, 0);
        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(0, 2, 0);
-        }
+       if (Input.GetKey(KeyCode.D))
+       {
+           transform.Rotate(0, 2, 0);
+       }
     }
 }

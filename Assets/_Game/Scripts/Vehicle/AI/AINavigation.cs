@@ -21,7 +21,7 @@ public class AINavigation : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = Random.Range(58, 62);
+        agent.speed = Random.Range(75, 79);
         agent.acceleration = Random.Range(38, 42);
 
         //Stores the origin of all Navigation Points inside checkpointsOrigin
